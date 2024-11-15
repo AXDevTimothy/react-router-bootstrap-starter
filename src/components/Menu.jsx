@@ -1,35 +1,41 @@
 import { Link } from "react-router-dom";
-import { Nav, Container } from "react-bootstrap";
+import { Nav, Container, Navbar , Button, Form, Row, Col} from "react-bootstrap";
+
+
+function connectWalletPressed() {
+  console.log("Button Pressed");
+}
+
+function walletButtonText() {
+  return "0x123...35450";
+}
 
 const Menu = () => {
   return (
-    <Container>
-      <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <Link
-          to="/"
-          className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
-        >
-          Template
-        </Link>
-        <Nav>
-          <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <Link to="/about" className="nav-link px-2 link-secondary">
-                About
-              </Link>
-            </li>
-          </ul>
+      <Navbar bg="dark" data-bs-theme="dark">
+        <Container >
+          <Navbar.Brand href="#home">BillyBoard</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#features">Read the Docs</Nav.Link>
+            <Nav.Link href="#pricing">Build with Billy</Nav.Link>   
 
-          <div className="col-md-3 text-end">
-            <Link to="/">
-              <button type="button" className="btn btn-outline-primary me-2">
-                Documentation
-              </button>
-            </Link>
-          </div>
-        </Nav>
-      </header>
-    </Container>
+          </Nav>
+          <Form inline>
+            <Row>
+              <Col className="px-5">
+                <Form.Control
+                  type="text"
+                  placeholder="Board ID"
+                  className=" mr-2"
+                  
+                />
+              </Col>
+            </Row>
+          </Form>
+          <Button variant="primary"onClick={connectWalletPressed}>{walletButtonText()}</Button>
+
+        </Container>
+      </Navbar>
   );
 };
 
